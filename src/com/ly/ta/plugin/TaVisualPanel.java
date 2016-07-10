@@ -9,6 +9,7 @@ import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 
 import javax.swing.*;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -22,8 +23,9 @@ public class TaVisualPanel extends DialogWrapper {
     private JTabbedPane viewFileTab;
     private JButton buttonBrowse;
     private JTextField directoryName;
-    private JFileChooser fileChooser = new JFileChooser("");
+    private JFileChooser fileChooser = new JFileChooser();
     private VirtualFile selectedVFile;
+    private String defalutDir = "";
     // Set maximum allowed number of lines in a text file to edit.
 
     private JPanel myVisualUI;
@@ -42,6 +44,10 @@ public class TaVisualPanel extends DialogWrapper {
             String dir = prop.getProperty("dir");
             if(dir != null && !dir.equals("")){
                 directoryName.setText(dir);
+                defalutDir = dir;
+                fileChooser.setCurrentDirectory(new File(defalutDir));
+            }else{
+                fileChooser.setCurrentDirectory(new java.io.File("."));
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -68,7 +74,7 @@ public class TaVisualPanel extends DialogWrapper {
             Properties prop1 = new Properties();
             try {
                 //set the properties value
-                prop1.setProperty("dir", selectedVFile.getUrl());
+                prop1.setProperty("dir", selectedVFile.getCanonicalPath());
                 //save properties to project root folder
                 prop1.store(new FileOutputStream("config.properties"), null);
             } catch (IOException ex) {

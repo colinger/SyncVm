@@ -1,39 +1,41 @@
 <idea-plugin version="2">
-  <id>com.your.company.unique.plugin.id</id>
-  <name>Plugin display name here</name>
-  <version>1.0</version>
-  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <id>com.your.company.unique.plugin.id</id>
+    <name>TaSyncVM</name>
+    <version>1.0</version>
+    <vendor email="gxy23996@ly.com" url="http://www.ly.com">同程旅游•智慧出行</vendor>
 
-  <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+    <description><![CDATA[
+      用来同步velocity格式的文件到tomcat下.<br>
+      直接在idea里修改vm,然后同步(自动或手动)到tomcat下
     ]]></description>
 
-  <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
+    <change-notes><![CDATA[
+
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="141.0"/>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="141.0"/>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <!-- uncomment to enable plugin in all products
-  <depends>com.intellij.modules.lang</depends>
-  -->
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
 
-  <actions>
-    <!-- Add your actions here -->
-    <action id="ta.syn.vm" class="com.ly.ta.plugin.SyncVmConfig" text="TaSyncVM" description="同步vm文件到Tomcat">
-      <!--<add-to-group group-id="EditorPopupMenu2" anchor="first"/>-->
-      <add-to-group group-id="ToolsMenu" anchor="first"/>
-    </action>
-  </actions>
+    <actions>
+        <!-- Add your actions here -->
+        <action id="ta.syn.vm.conf" class="com.ly.ta.plugin.SyncVmConfig" text="TaSyncVMConfig"
+                description="同步vm文件到Tomcat配置">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+        <action id="ta.syn.vm" class="com.ly.ta.plugin.SyncVm" text="TaSyncVM" description="同步vm文件到Tomcat">
+            <add-to-group group-id="EditorPopupMenu2" anchor="first"/>
+        </action>
+    </actions>
 
 </idea-plugin>
