@@ -19,8 +19,6 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.util.Properties;
 
-import static com.sun.tools.doclint.Entity.prop;
-
 /**
  * @author gxy23996
  * @version $Id: SyncVm.java, v0.1 2016/7/8 gxy23996 Exp $$
